@@ -56,12 +56,17 @@ addIgnoredField;
 upToEnd)
 ]
 
+{ #category : #'rx-matcher' }
+RxInfo >> findDrug: aDrugName [ 
+	self shouldBeImplemented.
+]
+
 { #category : #accessing }
 RxInfo >> rxList [
 	^ rxList
 ]
 
 { #category : #accessing }
-RxInfo >> rxList: anObject [
-	rxList := anObject
+RxInfo >> rxList: aList [
+	rxList := aList
 ]
