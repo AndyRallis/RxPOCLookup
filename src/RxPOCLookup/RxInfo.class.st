@@ -11,50 +11,6 @@ Class {
 }
 
 { #category : #'read-in' }
-RxInfo class >> RxInfo: file [ 
-(NeoCSVReader on: (file asFileReference) readStream)
-recordClass: Rx; 
-addField: #ndcnum:;
-addIgnoredField;
-addIgnoredField;
-addIgnoredField;
-addIgnoredField;
-addIgnoredField;
-addIgnoredField;
-addIgnoredField;
-addIgnoredField;
-addIgnoredField;
-addIgnoredField;
-addIgnoredField;
-addIgnoredField;
-addIgnoredField;
-addIgnoredField;
-addField: #pksize:;
-addIgnoredField;
-addIgnoredField;
-addIgnoredField;
-addIgnoredField;
-addField: #strngth:;
-addIgnoredField;
-addIgnoredField;
-addIgnoredField;
-addIgnoredField;
-addField: #mstfmds:;
-addIgnoredField;
-addIgnoredField;
-addIgnoredField;
-addField: #prodnme:;
-addIgnoredField;
-addField: #gennme:;
-addIgnoredField;
-addIgnoredField;
-addIgnoredField;
-addIgnoredField;
-addIgnoredField;
-upToEnd
-]
-
-{ #category : #'read-in' }
 RxInfo class >> createRxList: file [ 
  ^ self new rxList:
 ((NeoCSVReader on: (file asFileReference) readStream)
