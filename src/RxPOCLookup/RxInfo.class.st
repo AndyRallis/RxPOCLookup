@@ -58,7 +58,7 @@ upToEnd)
 
 { #category : #'rx-matcher' }
 RxInfo >> findDrug: aDrugName [ 
-	self shouldBeImplemented.
+	^ FuzzyMatcher allSortedByScoreMatching: aDrugName in: (rxList collect: [ :each | each prodnme ])
 ]
 
 { #category : #accessing }
