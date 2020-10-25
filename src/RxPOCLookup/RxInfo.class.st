@@ -58,7 +58,10 @@ upToEnd)
 
 { #category : #'rx-matcher' }
 RxInfo >> findDrug: aDrugName [ 
-	^ FuzzyMatcher allSortedByScoreMatching: aDrugName in: (rxList collect: [ :each | each prodnme ])
+	^ FuzzyMatcher 
+		allSortedByScoreMatching: aDrugName 
+		in: rxList
+		by: [ :each | each prodnme ]
 ]
 
 { #category : #accessing }

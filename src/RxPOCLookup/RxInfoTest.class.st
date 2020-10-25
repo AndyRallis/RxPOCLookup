@@ -23,9 +23,9 @@ RxInfoTest >> setUp [
 { #category : #tests }
 RxInfoTest >> testFuzzyLookup [
 	| key result |
-	key := 'rug'.
+	key := 'rug 1'.
 	result := rxInfo findDrug: key.
-	self assert: (result at: 1) equals: 'Drug 1 - Brand'
+	self assert: (result first prodnme) equals: 'Drug 1 - Brand'
 ]
 
 { #category : #tests }
