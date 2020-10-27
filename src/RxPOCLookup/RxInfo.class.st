@@ -5,7 +5,8 @@ Class {
 	#name : #RxInfo,
 	#superclass : #Object,
 	#instVars : [
-		'rxList'
+		'rxList',
+		'currentList'
 	],
 	#category : #RxPOCLookup
 }
@@ -56,15 +57,30 @@ addIgnoredField;
 upToEnd)
 ]
 
+{ #category : #accessing }
+RxInfo >> drugMatchResults: aDrugName [
+	| matchList isMatch |
+	matchList := self findExactDrug: aDrugName.
+	isMatch := matchList isNotEmpty.
+	^ RxResult matchList: matchList match: isMatch
+]
+
 { #category : #'rx-matcher' }
 RxInfo >> findDrug: aDrugName [ 
+	"Fuzzy drug match to return top drugs"
 	^ FuzzyMatcher 
 		allSortedByScoreMatching: aDrugName 
 		in: rxList
 		by: [ :each | each prodnme ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'rx-matcher' }
+RxInfo >> findExactDrug: aDrugName [ 
+	"When user selects from the list, we then pull all drugs with exact match"
+	^ rxList select: [ :rx | rx prodnme = aDrugName ]
+]
+
+{ #category : #'rx-matcher' }
 RxInfo >> findTopDrugMatch: anInteger key: aKey [
 	^ (((self findDrug: aKey) do: 
 			[ :rx | rx prodnme ])
