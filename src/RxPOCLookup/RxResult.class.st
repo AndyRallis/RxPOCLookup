@@ -11,16 +11,9 @@ Class {
 { #category : #'as yet unclassified' }
 RxResult class >> matchList: aDrugList match: isMatch [
 		isMatch 
-			ifTrue: [ ^ self new match: isMatch; selectedRx: aDrugList first ]
-			ifFalse: [ ^ self new match: isMatch ]
+			ifTrue: [ ^ self new match: isMatch; selectedRx: aDrugList ]
+			ifFalse: [ ^ self new match: isMatch; selectedRx: OrderedCollection new ]
 		
-]
-
-{ #category : #accessing }
-RxResult >> drugName [
-	self match
-		ifTrue: [ ^ selectedRx prodnme ]
-		ifFalse: ''
 ]
 
 { #category : #accessing }
@@ -34,6 +27,11 @@ RxResult >> match: isMatch [
 ]
 
 { #category : #accessing }
-RxResult >> selectedRx: aDrug [ 
-	selectedRx := aDrug
+RxResult >> selectedRx [
+	^ selectedRx
+]
+
+{ #category : #accessing }
+RxResult >> selectedRx: aSelectedList [
+	selectedRx := aSelectedList
 ]

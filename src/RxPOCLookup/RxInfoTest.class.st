@@ -40,7 +40,7 @@ RxInfoTest >> testFindExactDrug [
 	key := 'Drug 1 - Brand'.
 	rxResult := rxInfo drugMatchResults: key.
 	self assert: rxResult match equals: true.
-	self assert: rxResult drugName equals: 'Drug 1 - Brand'
+	self assert: rxResult selectedRx first prodnme equals: 'Drug 1 - Brand'
 
 ]
 
