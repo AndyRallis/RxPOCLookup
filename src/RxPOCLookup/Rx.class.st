@@ -56,6 +56,16 @@ Rx >> pksize: anObject [
 ]
 
 { #category : #accessing }
+Rx >> printOn: aStream [
+	aStream 
+		<< '('
+		<< self ndcnum
+		<< ' - '
+		<< self prodnme 
+		<< ')'
+]
+
+{ #category : #accessing }
 Rx >> prodnme [
 	^ prodnme
 ]

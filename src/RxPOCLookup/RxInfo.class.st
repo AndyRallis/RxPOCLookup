@@ -64,6 +64,15 @@ RxInfo >> findDrug: aDrugName [
 		by: [ :each | each prodnme ]
 ]
 
+{ #category : #'as yet unclassified' }
+RxInfo >> findTopDrugMatch: anInteger key: aKey [
+	^ (((self findDrug: aKey) do: 
+			[ :rx | rx prodnme ])
+			asSet) asOrderedCollection 
+			copyFrom: 1
+			to: anInteger 
+]
+
 { #category : #accessing }
 RxInfo >> rxList [
 	^ rxList

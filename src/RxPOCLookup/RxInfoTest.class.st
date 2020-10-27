@@ -35,3 +35,19 @@ RxInfoTest >> testFuzzyLookupBlank [
 	result := (rxInfo findDrug: key).
 	self assert: result equals: Array new
 ]
+
+{ #category : #tests }
+RxInfoTest >> testPullTopDrugsThree [
+	| key result |
+	key := 'rug'.
+	result := rxInfo findTopDrugMatch: 3 key: key.
+	self assert: result size equals: 3
+]
+
+{ #category : #tests }
+RxInfoTest >> testPullTopDrugsTwo [
+	| key result |
+	key := 'rug'.
+	result := rxInfo findTopDrugMatch: 2 key: key.
+	self assert: result size equals: 2
+]
