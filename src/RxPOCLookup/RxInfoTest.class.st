@@ -38,9 +38,8 @@ RxInfoTest >> testFindDrug [
 RxInfoTest >> testFindExactDrug [
 	| key rxResult |
 	key := 'Drug 1 - Brand'.
-	rxResult := rxInfo drugMatchResults: key.
-	self assert: rxResult match equals: true.
-	self assert: rxResult selectedRx first prodnme equals: 'Drug 1 - Brand'
+	rxResult := rxInfo findExactDrug: key.
+	self assert: rxResult first prodnme equals: 'Drug 1 - Brand'
 
 ]
 
@@ -48,8 +47,8 @@ RxInfoTest >> testFindExactDrug [
 RxInfoTest >> testFindTopDrugMatchKey [
 	| key result |
 	key := 'rug'.
-	result := rxInfo findTopDrugMatch: 3 key: key.
-	self assert: result size equals: 3
+	result := rxInfo findTopDrugMatch: 2 key: key.
+	self assert: result size equals: 2
 ]
 
 { #category : #tests }

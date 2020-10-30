@@ -57,14 +57,6 @@ addIgnoredField;
 upToEnd)
 ]
 
-{ #category : #accessing }
-RxInfo >> drugMatchResults: aDrugName [
-	| matchList isMatch |
-	matchList := self findExactDrug: aDrugName.
-	isMatch := matchList isNotEmpty.
-	^ RxResult matchList: matchList match: isMatch
-]
-
 { #category : #'rx-matcher' }
 RxInfo >> findDrug: aDrugName [ 
 	"Fuzzy drug match to return top drugs"
@@ -82,11 +74,10 @@ RxInfo >> findExactDrug: aDrugName [
 
 { #category : #'rx-matcher' }
 RxInfo >> findTopDrugMatch: anInteger key: aKey [
-	^ (((self findDrug: aKey) do: 
+	^ (((self findDrug: aKey) collect: 
 			[ :rx | rx prodnme ])
 			asSet) asOrderedCollection 
-			copyFrom: 1
-			to: anInteger 
+			takeFirst: anInteger
 ]
 
 { #category : #accessing }
