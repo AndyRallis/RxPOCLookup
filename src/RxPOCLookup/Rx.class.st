@@ -25,6 +25,16 @@ Rx >> gennme: anObject [
 	gennme := anObject
 ]
 
+{ #category : #parsing }
+Rx >> intoDictionary [
+	 ^ { 'ndcnum' -> self ndcnum.
+		  'prodnme' -> self prodnme.
+		  'gennme' -> self gennme.
+		  'pksize' -> self pksize.
+		  'mstfmds' -> self mstfmds.
+		  'strngth' -> self strngth } asDictionary
+]
+
 { #category : #accessing }
 Rx >> mstfmds [
 	^ mstfmds

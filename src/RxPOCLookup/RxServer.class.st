@@ -23,10 +23,17 @@ RxServer class >> stopAll [
 ]
 
 { #category : #handlers }
-RxServer >> fuzzyMatch: aRequest [
+RxServer >> exactMatchHandler: aRequest [
 	| parsedMessage |
 	parsedMessage := ((NeoJSONReader fromString: (aRequest entity contents)) at: 'drugName').
-	^ (NeoJSONWriter toString: (rxInfo findTopDrugMatch: 3 key: parsedMessage)) 
+	^ self lookupAndFormatDrug: parsedMessage
+]
+
+{ #category : #handlers }
+RxServer >> fuzzyMatchHandler: aRequest [
+	| parsedMessage |
+	parsedMessage := ((NeoJSONReader fromString: (aRequest entity contents)) at: 'drugName').
+	^ rxInfo findTopDrugMatch: 3 key: parsedMessage
 ]
 
 { #category : #initialization }
@@ -45,6 +52,11 @@ RxServer >> initializePort: anInteger [
 	teapotServer start
 ]
 
+{ #category : #handlers }
+RxServer >> lookupAndFormatDrug: aDrugName [
+	^ rxInfo findDrugInDictionary: aDrugName
+]
+
 { #category : #routes }
 RxServer >> registerErrorHandlers [
 	teapotServer 
@@ -54,7 +66,8 @@ RxServer >> registerErrorHandlers [
 { #category : #routes }
 RxServer >> registerRoutes [
 	teapotServer
-		POST: '/fuzzydrug' -> (Send message: #fuzzyMatch: to: self)
+		POST: '/fuzzydrug' -> (Send message: #fuzzyMatchHandler: to: self);
+		POST: '/exactdrug' -> (Send message: #exactMatchHandler: to: self)
 ]
 
 { #category : #accessing }

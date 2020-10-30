@@ -6,7 +6,7 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'rxList',
-		'currentList'
+		'exactDrugList'
 	],
 	#category : #RxPOCLookup
 }
@@ -67,6 +67,12 @@ RxInfo >> findDrug: aDrugName [
 ]
 
 { #category : #'rx-matcher' }
+RxInfo >> findDrugInDictionary: aDrugName [
+	exactDrugList := self findExactDrug: aDrugName.
+	^ self intoRxDictionary
+]
+
+{ #category : #'rx-matcher' }
 RxInfo >> findExactDrug: aDrugName [ 
 	"When user selects from the list, we then pull all drugs with exact match"
 	^ rxList select: [ :rx | rx prodnme = aDrugName ]
@@ -78,6 +84,13 @@ RxInfo >> findTopDrugMatch: anInteger key: aKey [
 			[ :rx | rx prodnme ])
 			asSet) asOrderedCollection 
 			takeFirst: anInteger
+]
+
+{ #category : #'rx-matcher' }
+RxInfo >> intoRxDictionary [
+	^ exactDrugList collect: [ :rx | rx intoDictionary ]
+	
+
 ]
 
 { #category : #accessing }
