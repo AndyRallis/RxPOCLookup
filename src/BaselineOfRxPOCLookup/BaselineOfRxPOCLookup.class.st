@@ -17,7 +17,7 @@ BaselineOfRxPOCLookup >> baseline: spec [
 			
 			"Packages"
 			spec 
-				package: 'RxPOCLookup' with: #('NeoCSV' 'NeoJSON' 'Teapot') ]
+				package: 'RxPOCLookup' with: [ spec requires: #('NeoCSV' 'NeoJSON' 'Teapot') ] ]
 ]
 
 { #category : #'external-dependencies' }
