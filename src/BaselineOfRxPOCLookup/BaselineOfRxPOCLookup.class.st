@@ -11,10 +11,10 @@ BaselineOfRxPOCLookup >> baseline: spec [
 		for: #common
 		do: [ 
 			"Dependencies"
-			self neoJSON: spec.
+			"self neoJSON: spec.
 			self neoCSV: spec.
 			self teapot: spec.
-			
+			"
 			"Packages"
 			spec 
 				package: 'RxPOCLookup';
