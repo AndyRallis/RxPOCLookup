@@ -35,11 +35,6 @@ BaselineOfRxPOCLookup >> neoJSON: spec [
 		with: [ spec repository: 'github://svenvc/NeoJSON/repository' ]
 ]
 
-{ #category : #accessing }
-BaselineOfRxPOCLookup >> projectClass [
-	^ MetacelloCypressBaselineProject
-]
-
 { #category : #'external-dependencies' }
 BaselineOfRxPOCLookup >> teapot: spec [
 	spec
