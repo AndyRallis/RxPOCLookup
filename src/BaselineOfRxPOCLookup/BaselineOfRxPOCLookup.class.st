@@ -11,14 +11,14 @@ BaselineOfRxPOCLookup >> baseline: spec [
 		for: #common
 		do: [ 
 			"Dependencies"
-			"self neoJSON: spec.
+			self neoJSON: spec.
 			self neoCSV: spec.
-			self teapot: spec."
+			self teapot: spec.
 			
 			"Packages"
 			spec 
-				package: 'RxPOCLookup'
-				"package: 'RxPOCLookup-Tests' with: [ spec requires: #('RxPOCLookup') ] " ]
+				package: 'RxPOCLookup';
+				package: 'RxPOCLookup-Tests' with: [ spec requires: #('RxPOCLookup') ] ]
 ]
 
 { #category : #'external-dependencies' }
