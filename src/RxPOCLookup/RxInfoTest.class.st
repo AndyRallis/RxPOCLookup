@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'rxInfo'
 	],
-	#category : #'RxPOCLookup-Test'
+	#category : #'RxPOCLookup-Tests'
 }
 
 { #category : #running }
