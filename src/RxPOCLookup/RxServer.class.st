@@ -1,3 +1,9 @@
+"
+I'm an RxServer. I contain a Teapot REST server and wrap RxInfo's fuzzy and exact lookup methods with URLs.
+
+POST /fuzzydrug and ""drugName"" in the JSON body to get a list of fuzzy drugs
+POST /exactdrug and ""drugName"" in the JSON body to get a list of possible matches
+"
 Class {
 	#name : #RxServer,
 	#superclass : #Object,

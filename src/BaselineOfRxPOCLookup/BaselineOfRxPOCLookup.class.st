@@ -1,3 +1,6 @@
+"
+I'm a baseline. I'm a baseline of RxPOCLookup
+"
 Class {
 	#name : #BaselineOfRxPOCLookup,
 	#superclass : #BaselineOf,
