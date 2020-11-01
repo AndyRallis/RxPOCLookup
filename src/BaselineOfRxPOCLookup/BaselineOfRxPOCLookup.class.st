@@ -17,8 +17,7 @@ BaselineOfRxPOCLookup >> baseline: spec [
 			
 			"Packages"
 			spec 
-				package: 'RxPOCLookup';
-				package: 'RxPOCLookup-Tests' with: [ spec requires: #('RxPOCLookup') ] ]
+				package: 'RxPOCLookup' ]
 ]
 
 { #category : #'external-dependencies' }
