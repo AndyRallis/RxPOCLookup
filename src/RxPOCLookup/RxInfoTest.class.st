@@ -31,7 +31,7 @@ RxInfoTest >> testFindDrug [
 	| key result |
 	key := 'rug 1'.
 	result := rxInfo findDrug: key.
-	self assert: (result first prodnme) equals: 'Drug 1 - Brand'
+	self assert: (result first prodnme) equals: 'Drug 1 - brand'
 ]
 
 { #category : #tests }
@@ -39,7 +39,7 @@ RxInfoTest >> testFindExactDrug [
 	| key rxResult |
 	key := 'Drug 1 - Brand'.
 	rxResult := rxInfo findExactDrug: key.
-	self assert: rxResult first prodnme equals: 'Drug 1 - Brand'
+	self assert: rxResult first prodnme equals: 'Drug 1 - brand'
 
 ]
 

@@ -75,7 +75,7 @@ RxInfo >> findDrugInDictionary: aDrugName [
 { #category : #'rx-matcher' }
 RxInfo >> findExactDrug: aDrugName [ 
 	"When user selects from the list, we then pull all drugs with exact match"
-	^ rxList select: [ :rx | rx prodnme = aDrugName ]
+	^ rxList select: [ :rx | rx prodnme asUppercase = aDrugName asUppercase ]
 ]
 
 { #category : #'rx-matcher' }

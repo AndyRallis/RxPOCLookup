@@ -77,7 +77,7 @@ Rx >> printOn: aStream [
 
 { #category : #accessing }
 Rx >> prodnme [
-	^ prodnme
+	^ prodnme asLowercase asCapitalizedPhrase 
 ]
 
 { #category : #accessing }
