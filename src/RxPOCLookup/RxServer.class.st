@@ -38,8 +38,9 @@ RxServer >> exactMatchHandler: aRequest [
 { #category : #handlers }
 RxServer >> fuzzyMatchHandler: aRequest [
 	| parsedMessage |
-	parsedMessage := ((NeoJSONReader fromString: (aRequest entity contents)) at: 'drugName').
-	^ rxInfo findTopDrugMatch: 3 key: parsedMessage
+	parsedMessage := (NeoJSONReader fromString: aRequest entity contents)
+		at: 'drugName'.
+	^ rxInfo findTopDrugMatch: 5 key: parsedMessage
 ]
 
 { #category : #initialization }
