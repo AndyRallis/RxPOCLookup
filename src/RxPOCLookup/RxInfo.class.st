@@ -58,7 +58,6 @@ RxInfo class >> createRxList: file [
 				addIgnoredField;
 				upToEnd);
 		drugNameList;
-		save;
 		yourself
 ]
 
