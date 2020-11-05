@@ -62,33 +62,6 @@ RxInfo class >> createRxList: file [
 		yourself
 ]
 
-{ #category : #'class initialization' }
-RxInfo class >> initialize [
-	self reset
-]
-
-{ #category : #initialization }
-RxInfo class >> isVoyageRoot [ 
-	^true
-]
-
-{ #category : #initialization }
-RxInfo class >> reset [ 
-	self setUpConnection.
-]
-
-{ #category : #initialization }
-RxInfo class >> setUpConnection [
-	| repository |
-	repository := VOMongoRepository
-		host: '68.183.224.151'
-		port: 443
-		database: 'redbookDrugList'
-		username: 'root'
-		password: 'tz7JK2WMtEUf96c'.
-	repository enableSingleton
-]
-
 { #category : #accessing }
 RxInfo >> drugNameList [
 	drugNameList := (rxList collect: [ :rx | rx prodnme ]) asSet asOrderedCollection
