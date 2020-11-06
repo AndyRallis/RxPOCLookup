@@ -14,56 +14,57 @@ Class {
 
 { #category : #'read-in' }
 RxInfo class >> createRxList: file [
+	| tempRxList |
+	tempRxList := (NeoCSVReader on: file asFileReference readStream)
+		recordClass: Rx;
+		skipHeader;
+		addField: #ndcnum:;
+		addIgnoredField;
+		addIgnoredField;
+		addIgnoredField;
+		addIgnoredField;
+		addIgnoredField;
+		addIgnoredField;
+		addIgnoredField;
+		addIgnoredField;
+		addIgnoredField;
+		addIgnoredField;
+		addIgnoredField;
+		addIgnoredField;
+		addIgnoredField;
+		addIgnoredField;
+		addField: #pksize:;
+		addIgnoredField;
+		addIgnoredField;
+		addIgnoredField;
+		addIgnoredField;
+		addField: #strngth:;
+		addIgnoredField;
+		addIgnoredField;
+		addIgnoredField;
+		addIgnoredField;
+		addField: #mstfmds:;
+		addIgnoredField;
+		addIgnoredField;
+		addIgnoredField;
+		addField: #prodnme:;
+		addIgnoredField;
+		addField: #gennme:;
+		addIgnoredField;
+		addIgnoredField;
+		addIgnoredField;
+		addIgnoredField;
+		addIgnoredField;
+		upToEnd.
 	^ self new
-		rxList:
-			((NeoCSVReader on: file asFileReference readStream)
-				recordClass: Rx;
-				skipHeader;
-				addField: #ndcnum:;
-				addIgnoredField;
-				addIgnoredField;
-				addIgnoredField;
-				addIgnoredField;
-				addIgnoredField;
-				addIgnoredField;
-				addIgnoredField;
-				addIgnoredField;
-				addIgnoredField;
-				addIgnoredField;
-				addIgnoredField;
-				addIgnoredField;
-				addIgnoredField;
-				addIgnoredField;
-				addField: #pksize:;
-				addIgnoredField;
-				addIgnoredField;
-				addIgnoredField;
-				addIgnoredField;
-				addField: #strngth:;
-				addIgnoredField;
-				addIgnoredField;
-				addIgnoredField;
-				addIgnoredField;
-				addField: #mstfmds:;
-				addIgnoredField;
-				addIgnoredField;
-				addIgnoredField;
-				addField: #prodnme:;
-				addIgnoredField;
-				addField: #gennme:;
-				addIgnoredField;
-				addIgnoredField;
-				addIgnoredField;
-				addIgnoredField;
-				addIgnoredField;
-				upToEnd);
+		rxList: (tempRxList groupedBy: [ :rx | rx prodnme asUppercase ]);
 		drugNameList;
 		yourself
 ]
 
 { #category : #accessing }
 RxInfo >> drugNameList [
-	drugNameList := (rxList collect: [ :rx | rx prodnme ]) asSet asOrderedCollection
+	drugNameList := rxList keys asSet asOrderedCollection
 ]
 
 { #category : #'rx-matcher' }
@@ -82,9 +83,10 @@ RxInfo >> findDrugInDictionary: aDrugName [
 ]
 
 { #category : #'rx-matcher' }
-RxInfo >> findExactDrug: aDrugName [ 
+RxInfo >> findExactDrug: aDrugName [
 	"When user selects from the list, we then pull all drugs with exact match"
-	^ rxList select: [ :rx | rx prodnme asUppercase = aDrugName asUppercase ]
+
+	^ rxList at: aDrugName asUppercase ifAbsent: #()
 ]
 
 { #category : #'rx-matcher' }

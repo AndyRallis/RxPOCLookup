@@ -9,7 +9,7 @@ Class {
 
 { #category : #running }
 RxInfoTest >> setUp [
-	| a b c d e f |
+	| a b c d e f tempRxList |
 	super setUp.
 	a := Rx new
 		ndcnum: '1234567';
@@ -35,14 +35,9 @@ RxInfoTest >> setUp [
 		ndcnum: '5';
 		gennme: 'Drug 2 - Gen';
 		prodnme: 'Drug 2 - Brand'.
+	tempRxList := {a. b. c. d. e. f }.
 	rxInfo := RxInfo new
-		rxList:
-			{a.
-			b.
-			c.
-			d.
-			e.
-			f} asOrderedCollection.
+		rxList: (tempRxList groupedBy: [ :rx | rx prodnme asUppercase ]).
 	rxInfo drugNameList
 ]
 
@@ -57,10 +52,17 @@ RxInfoTest >> testFindDrug [
 { #category : #tests }
 RxInfoTest >> testFindExactDrug [
 	| key rxResult |
-	key := 'Drug 1 - Brand'.
+	key := 'Drug 2 - Brand'.
 	rxResult := rxInfo findExactDrug: key.
-	self assert: rxResult first prodnme equals: 'Drug 1 - brand'
+	self assert: rxResult first prodnme equals: 'Drug 2 - brand'
+]
 
+{ #category : #tests }
+RxInfoTest >> testFindExactDrugNotPreset [
+	| key rxResult |
+	key := 'Drug 1 - fsdfd'.
+	rxResult := rxInfo findExactDrug: key.
+	self assert: rxResult equals: #()
 ]
 
 { #category : #test }
