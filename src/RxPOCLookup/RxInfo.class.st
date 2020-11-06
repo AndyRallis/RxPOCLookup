@@ -65,8 +65,8 @@ RxInfo class >> createRxList: file [
 { #category : #accessing }
 RxInfo >> drugNameList [
 	drugNameList := (rxList keys
-		collect: [ :prodnme | prodnme asLowercase asCapitalizedPhrase ]) asSet
-		asOrderedCollection
+		collect: [ :prodnme | prodnme asLowercase asSentenceCapitalize ])
+		asSet asOrderedCollection
 ]
 
 { #category : #'rx-matcher' }
