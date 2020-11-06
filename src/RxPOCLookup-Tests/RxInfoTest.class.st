@@ -35,7 +35,12 @@ RxInfoTest >> setUp [
 		ndcnum: '5';
 		gennme: 'Drug 2 - Gen';
 		prodnme: 'Drug 2 - Brand'.
-	tempRxList := {a. b. c. d. e. f }.
+	tempRxList := {a.
+	b.
+	c.
+	d.
+	e.
+	f}.
 	rxInfo := RxInfo new
 		rxList: (tempRxList groupedBy: [ :rx | rx prodnme asUppercase ]).
 	rxInfo drugNameList

@@ -64,16 +64,16 @@ RxInfo class >> createRxList: file [
 
 { #category : #accessing }
 RxInfo >> drugNameList [
-	drugNameList := rxList keys asSet asOrderedCollection
+	drugNameList := (rxList keys
+		collect: [ :prodnme | prodnme asLowercase asCapitalizedPhrase ]) asSet
+		asOrderedCollection
 ]
 
 { #category : #'rx-matcher' }
 RxInfo >> findDrug: aDrugName [
 	"Fuzzy drug match to return top drugs"
 
-	^ FuzzyMatcher
-		allSortedByScoreMatching: aDrugName
-		in: drugNameList
+	^ FuzzyMatcher allSortedByScoreMatching: aDrugName in: drugNameList
 ]
 
 { #category : #'rx-matcher' }
