@@ -4,10 +4,12 @@
 1. The /fuzzydrug lookup.
 - The API takes a JSON with the structure {"drugName": "PARTIAL NAME"} and fuzzy matches against a list of drug names
 - The top 5 are returned
+- Case insensitive
 
 2. /exactdrug
-- The API takes a JSON with the structure {"drugName": "PARTIAL NAME"} and fuzzy matches against a list of drug names
+- The API takes a JSON with the structure {"drugName": "exact name"} and fuzzy matches against a list of drug names
 - ndc, package size, strength, format, generic name are returned for all exact drug name matches
+- Case insensitive
 
 ## Initialization
 1) curl -L https://get.pharo.org/64/ | bash
